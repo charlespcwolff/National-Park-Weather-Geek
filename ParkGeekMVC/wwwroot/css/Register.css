@@ -1,0 +1,12 @@
+﻿.register-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: ". register .";
+}
+
+form {
+    grid-area: register;
+    max-width: 500px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}

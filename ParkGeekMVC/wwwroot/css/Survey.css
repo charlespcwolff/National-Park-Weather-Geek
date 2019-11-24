@@ -1,0 +1,28 @@
+﻿h1 {
+    margin-top: .5%;
+}
+
+form {
+    margin-top: 2%;
+}
+
+.form-check-label {
+    min-width: 120px;
+}
+
+.form-check-input {
+    max-width: 50px;
+    min-width: 50px;
+}
+
+#submit-survey-button {
+    max-width: 100px;
+}
+
+#park-field, #email-field {
+    max-width: 400px;
+}
+
+#state-field {
+    max-width: 70px;
+}

@@ -1,0 +1,92 @@
+﻿#weather-box {
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+    grid-template-areas: ". toggle" "weather weather";
+    margin: 2% 5% 2% 5%;
+}
+
+#f-c-toggle {
+    grid-area: toggle;
+    min-width: 10em;
+}
+
+#weather-forecast {
+    grid-area: weather;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.weather-tile {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "image"
+        "high"
+        "low";
+    text-align: center;
+    width: 60%;
+    height: 60%;
+}
+
+#first-day {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "title title"
+        "image image"
+        "high low"
+        "recommendation recommendation";
+    width: 80%;
+    margin-right: 8em;
+}
+
+#first-day > h3 {
+    grid-area: title;
+}
+
+.weather-image {
+    grid-area: image;
+    width: 100%;
+}
+
+.high-temp {
+    grid-area: high;
+}
+
+.low-temp {
+    grid-area: low;
+}
+
+.recommendation {
+    grid-area: recommendation;
+}
+
+#park {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: 
+        "image image"
+        "title title"
+        "details description";
+    margin: 2% 5% 2% 5%;
+}
+
+#park-image {
+    grid-area: image;
+}
+
+#park-image > img {
+    width: 100%;
+}
+
+#park-name {
+    grid-area: title;
+}
+
+#park-details {
+    grid-area: details;
+}
+
+#park-description {
+    grid-area: description;
+}

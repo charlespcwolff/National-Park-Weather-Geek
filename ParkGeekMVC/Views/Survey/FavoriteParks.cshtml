@@ -1,0 +1,38 @@
+﻿@using ParkGeek.DAL.Models
+@model IList<SurveySubtotal>
+
+@section StyleSheet {
+    <link href="~/css/FavoriteParks.css" rel="stylesheet" />
+}
+
+@section Title {
+    Favorite Parks
+}
+
+<section>
+    <h1>Most Popular Parks</h1>
+
+    <p>Thank you for your interest in our parks, here is a list of our most popular parks based on your feedback. If you haven't already, please submit a survey to show your support for your favorite park!</p>
+
+    <table>
+        <tr>
+            <th id="park-image-column"> </th>
+            <th>Park Name</th>
+            <th>Total Votes</th>
+        </tr>
+            @foreach (var park in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Park" asp-action="Detail" asp-route-parkCode="@park.ParkCode"><img src="~/Images/parks/@(park.ParkCode).jpg" /></a>
+                    </td>
+                    <td>
+                        <a asp-controller="Park" asp-action="Detail" asp-route-parkCode="@park.ParkCode">@park.ParkName</a>
+                    </td>
+                    <td>
+                        <p>@park.Total</p>
+                    </td>
+                </tr>
+            }
+    </table>
+</section>

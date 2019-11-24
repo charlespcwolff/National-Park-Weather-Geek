@@ -1,0 +1,63 @@
+﻿@model SurveyViewModel
+
+@section StyleSheet {
+    <link href="~/css/Survey.css" rel="stylesheet" />
+}
+
+@section Title {
+    Survey
+}
+
+<h1>Welcome To the National Park Survey</h1>
+
+<p>Thank you for taking the national park survey issue, your feedback is very important for helping us maintain our national treasures, the parks. Please fill out the details bellow and show your support for your favorite park!</p>
+
+<form asp-controller="Survey" asp-action="AddSurvey" method="post">
+    <div class="form-group row">
+        <label asp-for="ParkCode" class="col-sm-2 col-form-label">Favorite National Park</label>
+        <div class="col-sm-10">
+            <select asp-for="ParkCode" class="form-control" id="park-field" asp-items="Model.Parks"></select>
+        </div>
+        <span asp-validation-for="ParkCode"></span>
+    </div>
+    <div class="form-group row">
+        <label asp-for="EmailAddress" class="col-sm-2 col-form-label">Your email</label>
+        <div class="col-sm-10">
+            <input asp-for="EmailAddress" class="form-control" id="email-field" placeholder="Email Address" />
+        </div>
+        <span asp-validation-for="EmailAddress"></span>
+    </div>
+    <div class="form-group row">
+        <label asp-for="State" class="col-sm-2 col-form-label">State of residence</label>
+        <div class="col-sm-10">
+            <select asp-for="State" class="form-control" id="state-field" asp-items="Model.StateOptions"></select>
+        </div>
+        <span asp-validation-for="State"></span>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2 col-form-label" id="YourActivity">Your Activity Level</div>
+        <div id="form-activity">
+            <div class="form-check form-check-inline">
+                <input asp-for="ActivityLevel" class="form-check-input col-sm-10" type="radio" id="inlineRadio1" value="Inactive">
+                <label class="form-check-label">Inactive</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input asp-for="ActivityLevel" class="form-check-input col-sm-10" type="radio" id="inlineRadio2" value="Sedentary">
+                <label class="form-check-label">Sedentary</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input asp-for="ActivityLevel" class="form-check-input col-sm-10" type="radio" id="inlineRadio3" value="Active">
+                <label class="form-check-label">Active</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input asp-for="ActivityLevel" class="form-check-input col-sm-10" type="radio" id="inlineRadio4" value="Extremely Active">
+                <label class="form-check-label">Extremely Active</label>
+            </div>
+        </div>
+        <span asp-validation-for="ActivityLevel"></span>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label"></label>
+        <input type="submit" value="Submit" class="btn btn-primary col-sm-10" id="submit-survey-button" />
+    </div>
+</form>

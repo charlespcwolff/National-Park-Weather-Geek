@@ -1,0 +1,34 @@
+﻿#park-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.park-tile {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "image content";
+    grid-gap: 3em;
+    align-items: center;
+    margin: 3em 3em 3em 3em;
+}
+
+.park-tile > img {
+    grid-area: image;
+    width: 100%;
+}
+
+.park-tile > div {
+    grid-area: content;
+}
+
+@media screen and (max-width: 960px) {
+    .park-tile {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-areas: "image" "content";
+        grid-gap: 3em;
+        align-items: center;
+        margin: 3em 3em 3em 3em;
+    }
+}

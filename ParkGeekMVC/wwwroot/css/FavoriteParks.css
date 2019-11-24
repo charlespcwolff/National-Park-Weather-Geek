@@ -1,0 +1,28 @@
+﻿section {
+    margin: 2% 5% 2% 5%;
+}
+
+table {
+    text-align: center;
+}
+
+#park-image-column {
+    width: 20%;
+}
+
+table th {
+    width: 20%;
+}
+
+table img {
+    width: 100%;
+}
+
+table a {
+    font-weight: bold;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 1em;
+}

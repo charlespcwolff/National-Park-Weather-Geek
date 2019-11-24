@@ -1,0 +1,38 @@
+﻿#logo {
+    width: 33%;
+}
+
+#navbar {
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+    padding: 0;
+    background-color: rgb(94, 59, 4);
+}
+
+.error {
+    color: red;
+}
+
+footer {
+    border-top: solid 1px;
+}
+
+#copyright {
+    color: gray;
+    font-style: italic;
+}
+
+header {
+    background-image: url(../Images/parks/cvnp.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+#navbar-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-dark {
+    font-weight: bold;
+}

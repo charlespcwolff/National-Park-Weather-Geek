@@ -1,0 +1,94 @@
+﻿@using ParkGeek.DAL.Models
+@model DetailViewModel
+
+@section StyleSheet {
+    <link href="~/css/Detail.css" rel="stylesheet" />
+}
+
+@section Title {
+    Home Page
+}
+
+<section>
+    <div id="park">
+        <div id="park-image">
+            <img src="~/Images/parks/@(Model.Park.ParkCode).jpg" />
+        </div>
+        <div id="park-name">
+            <h2>@Model.Park.ParkName</h2>
+            <p><i>Founded in @(Model.Park.YearFounded). In the beautiful state of @(Model.Park.State).</i></p>
+        </div>
+        <div id="park-details">
+            <h5>Park Details</h5>
+            <div id="details-box">
+                <p><i>Entry Fee:</i> $@(Convert.ToDecimal(Model.Park.EntryFee).ToString("#,##0.00"))</p>
+                <p><i>Annual Vistors:</i> @string.Format("{0:n0}", Model.Park.AnnualVisitorCount)</p>
+                <p><i>Climate:</i> @Model.Park.Climate</p>
+                <p><i>Park Length:</i> @string.Format("{0:n0}", Model.Park.Acreage) Acres</p>
+                <p><i>Highest Elevation:</i> @string.Format("{0:n0}", Model.Park.ElevationInFeet) Ft</p>
+                <p><i>Miles of Trails:</i> @string.Format("{0:n0}", Model.Park.MilesOfTrail)</p>
+                <p><i>Number of Campsites:</i> @string.Format("{0:n0}", Model.Park.NumberOfCampsites)</p>
+                <p><i>Number of Animal Species:</i> @string.Format("{0:n0}", Model.Park.NumberOfAnimalSpecies)</p>
+            </div>
+        </div>
+        <div id="park-description">
+            <h4><i>"@Model.Park.InspirationalQuote" - @Model.Park.InspirationalQuoteSource</i></h4>
+            <p>@Model.Park.ParkDescription</p>
+        </div>
+    </div>
+    
+    <div id="weather-box">
+        <form asp-controller="Park" asp-action="SwitchDetailTemp" method="post" id="f-c-toggle">
+            @if (Model.PrefersFarenheit)
+            {
+                <input type="hidden" name="parkCode" value="@Model.Park.ParkCode"/>
+                <button type="submit" class="btn btn-primary">Swith to Celsius</button>
+            }
+            else
+            {
+                <input type="hidden" name="parkCode" value="@Model.Park.ParkCode" />
+                <button type="submit" class="btn btn-primary">Swith to Farenheit</button>
+            }
+        </form>
+
+        <div id="weather-forecast">
+            @foreach (var weather in Model.Forecast)
+            {
+                string addID = "";
+                if (weather.IsFirstDay)
+                {
+                    addID = "id= " + "first-day";
+                }
+
+            <div class="weather-tile " @addID>
+                @if (weather.IsFirstDay)
+                {
+                    <h3>Today</h3>
+                }
+
+                <img src="~/Images/weather/@weather.WeatherImage" class="weather-image" />
+
+                @if (Model.PrefersFarenheit)
+                {
+                    <p class="high-temp"><b>High:</b> @weather.HighFarenheit°F</p>
+                    <p class="low-temp"><b>Low:</b> @weather.LowFarenheit°F</p>
+                }
+                else
+                {
+                    <p class="high-temp"><b>High:</b> @weather.HighCelsius°C</p>
+                    <p class="low-temp"><b>Low:</b> @weather.LowCelsius°C</p>
+                }
+
+
+                @if (weather.IsFirstDay)
+                {
+                    <p class="recommendation">@weather.GetWeatherRecommendation()</p>
+                }
+            </div>
+            }
+        </div>
+
+    </div>
+</section>
+
+
